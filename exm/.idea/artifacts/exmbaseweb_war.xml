@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="exmbaseweb:war">
+    <output-path>$PROJECT_DIR$/exmbaseweb/target</output-path>
+    <root id="archive" name="exmbaseweb.war">
+      <element id="artifact" artifact-name="exmbaseweb:war exploded" />
+    </root>
+  </artifact>
+</component>

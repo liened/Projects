@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.git.exm.customermgr.dao.CustomerDAO">
+
+    <select id="getById" parameterType="com.git.exm.customermgr.vo.Customer" resultType="com.git.exm.customermgr.vo.Customer">
+      select
+        cust_id as "custId",
+        cust_num as "custNum",
+        pwd as "pwd",
+        show_name as "showName",
+        true_name as "trueName",
+        register_time as "registerTime"
+      from tb_customer
+      where cust_id = #{custId}
+    </select>
+</mapper>

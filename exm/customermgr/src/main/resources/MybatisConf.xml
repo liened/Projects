@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 类型别名
+    <typeAliases>
+        <typeAlias alias="Page" type="com.rong.base.entity.Page"/>
+    </typeAliases>-->
+
+    <!-- 插件配置 -->
+    <plugins>
+        <plugin interceptor="com.git.exm.pageutil.PagePlugin">
+            <property name="dealect" value="mysql"/>
+
+            <property name="pageSqlId" value=".*Page.*"/>
+        </plugin>
+    </plugins>
+
+</configuration>

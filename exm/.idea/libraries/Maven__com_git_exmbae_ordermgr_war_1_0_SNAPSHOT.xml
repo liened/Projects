@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: com.git.exmbae:ordermgr:war:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/git/exmbae/ordermgr/1.0-SNAPSHOT/ordermgr-1.0-SNAPSHOT.war!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/ordermgr/ordermgr-1.0-SNAPSHOT-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/git/exmbae/ordermgr/1.0-SNAPSHOT/ordermgr-1.0-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/ordermgr/ordermgr-1.0-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/git/exmbae/ordermgr/1.0-SNAPSHOT/ordermgr-1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

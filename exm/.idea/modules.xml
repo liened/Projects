@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cartmgr/cartmgr.iml" filepath="$PROJECT_DIR$/cartmgr/cartmgr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customermgr/customermgr.iml" filepath="$PROJECT_DIR$/customermgr/customermgr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exm.iml" filepath="$PROJECT_DIR$/exm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exmweb/exmweb.iml" filepath="$PROJECT_DIR$/exmweb/exmweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goodsmgr/goodsmgr.iml" filepath="$PROJECT_DIR$/goodsmgr/goodsmgr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ordermgr/ordermgr.iml" filepath="$PROJECT_DIR$/ordermgr/ordermgr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/storemgr/storemgr.iml" filepath="$PROJECT_DIR$/storemgr/storemgr.iml" />
+    </modules>
+  </component>
+</project>
