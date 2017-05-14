@@ -1,0 +1,58 @@
+create table tb_customer(
+cust_id int not null auto_increment,
+cust_num VARCHAR(20),
+pwd VARCHAR(20),
+show_name VARCHAR(100),
+true_name VARCHAR(100),
+register_time VARCHAR(100),
+PRIMARY key (cust_id)
+) charset=utf8 ENGINE = INNODB;
+
+
+
+create table tb_goods(
+goods_id int not null auto_increment,
+name VARCHAR(100),
+img_path VARCHAR(100),
+description VARCHAR(100),
+PRIMARY key (goods_id)
+) charset=utf8 ENGINE = INNODB;
+
+
+create table tb_cart(
+cart_id int not null auto_increment,
+cust_num int,
+goods_id int,
+buy_num int,
+PRIMARY key (cart_id)
+) charset=utf8 ENGINE = INNODB;
+
+
+create table tb_order(
+order_id int not null auto_increment,
+cust_num int,
+order_time varchar(20),
+total_money float,
+save_money float,
+state smallint,
+PRIMARY key (order_id)
+) charset=utf8 ENGINE = INNODB;
+
+
+create table tb_orderdetail(
+order_detail_id int not null auto_increment,
+order_id int,
+goods_id int,
+order_num int,
+price float,
+money float,
+save_money float,
+PRIMARY key (order_detail_id)
+) charset=utf8 ENGINE = INNODB;
+
+create table tb_store(
+store_id int not null auto_increment,
+goods_id int,
+store_num int,
+PRIMARY key (store_id)
+) charset=utf8 ENGINE = INNODB;
