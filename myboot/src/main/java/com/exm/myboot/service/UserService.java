@@ -23,11 +23,9 @@ public class UserService {
         return userDao.findAll();
     }
 
-    public User findByUserName(String userName){
-        return userDao.findByUserName(userName);
+    public User getByUserNameAndEmail(String userName,String email){
+        return userDao.getByUserNameAndEmail(userName,email);
     }
 
-    public User findByUserNameOrEmail(String userName,String email){
-        return userDao.findByUserNameOrEmail(userName,email);
-    }
+
 }

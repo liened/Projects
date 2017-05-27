@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -13,9 +15,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("getUser")
-    public User save(){
-        User user = userService.findByUserNameOrEmail("aa1","");
+    @RequestMapping("get")
+    public User get(HttpServletRequest request){
+        String userName = request.getParameter("userName");
+        String email = request.getParameter("email");
+        System.out.println("----------------------------------------------");
+        System.out.println("userName:"+userName+" - "+"email:"+email);
+        System.out.println("----------------------------------------------");
+        User user = userService.getByUserNameAndEmail(userName,email);
         if(user == null){
             return null;
         }
