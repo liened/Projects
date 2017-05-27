@@ -1,12 +1,10 @@
-package com.exm.myboot.bean;
+package com.exm.myboot.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "user_T")
 public class User implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -15,23 +13,27 @@ public class User implements Serializable{
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true,name ="user_name")
     private String userName;
 
-    @Column(nullable = false)
+    @Column(nullable = false,name="pass_word")
     private String passWord;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true,name="email")
     private String email;
 
-    @Column(nullable = true,unique = true)
+    @Column(nullable = true,unique = true,name="nick_name")
     private String nickName;
 
-    @Column(nullable = false)
+    @Column(nullable = false,name="reg_time")
     private String regTime;
 
     public Long getId() {
         return id;
+    }
+
+    public User(){
+
     }
 
     public User(String userName,String passWord,String email,String nickName,String regTime){

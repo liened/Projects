@@ -9,7 +9,7 @@ public class MyProperties {
     @Value("${webname}")
     private String name;
 
-    @Value("${webip")
+    @Value("${webip}")
     private String ip;
 
     public String getIp() {
