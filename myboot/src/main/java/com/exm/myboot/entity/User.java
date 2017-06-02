@@ -4,48 +4,42 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user_T")
-public class User implements Serializable{
+@Table(name = "t_user")
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false,unique = true,name ="user_name")
+    @Column(nullable = false,unique = true)
+    private String userNo;
+
+    @Column
     private String userName;
 
-    @Column(nullable = false,name="pass_word")
-    private String passWord;
+    @Column(nullable = false)
+    private Integer age;
 
-    @Column(nullable = false,unique = true,name="email")
+    @Column(nullable = false)
     private String email;
-
-    @Column(nullable = true,unique = true,name="nick_name")
-    private String nickName;
-
-    @Column(nullable = false,name="reg_time")
-    private String regTime;
 
     public Long getId() {
         return id;
     }
 
-    public User(){
-
-    }
-
-    public User(String userName,String passWord,String email,String nickName,String regTime){
-        this.userName =userName;
-        this.passWord = passWord;
-        this.email = email;
-        this.nickName = nickName;
-        this.regTime = regTime;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
     }
 
     public String getUserName() {
@@ -56,12 +50,12 @@ public class User implements Serializable{
         this.userName = userName;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getEmail() {
@@ -70,21 +64,5 @@ public class User implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getRegTime() {
-        return regTime;
-    }
-
-    public void setRegTime(String regTime) {
-        this.regTime = regTime;
     }
 }
