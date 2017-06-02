@@ -107,7 +107,7 @@ public class UserService {
      * Order by 区间查询
      * @return
      */
-    public List<User> findLast3ByUserNo(){
-        return userDao.findLast3ByUserNo();
+    public List<User> findTop3ByOrderByUserNoDesc(){
+        return userDao.findTop3ByOrderByUserNoDesc();
     }
 }

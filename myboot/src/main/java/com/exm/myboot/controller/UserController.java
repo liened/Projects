@@ -85,8 +85,8 @@ public class UserController {
         return userService.findFirstByOrderByUserNoAsc();
     }
 
-    @RequestMapping("findLast")
-    public List<User> findLast(){
-        return userService.findLast3ByUserNo();
+    @RequestMapping("findLast3")
+    public List<User> findLast3(){
+        return userService.findTop3ByOrderByUserNoDesc();
     }
 }

@@ -29,7 +29,7 @@ public interface UserDao extends JpaRepository<User,Long>{
      */
     User findFirstByOrderByUserNoAsc();
 
-    List<User> findLast3ByUserNo();
+    List<User> findTop3ByOrderByUserNoDesc();
 
     /**
      * 更新
