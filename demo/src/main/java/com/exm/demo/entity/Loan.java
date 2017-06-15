@@ -4,7 +4,7 @@ import com.exm.demo.common.entity.BaseEntity;
 
 public class Loan extends BaseEntity<Loan>{
 
-    private int loanId;
+    private Integer loanId;
     private String loanNum;
     private String custNum;
     private String custName;
@@ -13,11 +13,11 @@ public class Loan extends BaseEntity<Loan>{
     private String product;
     private String loanAmount;
 
-    public int getLoanId() {
+    public Integer getLoanId() {
         return loanId;
     }
 
-    public void setLoanId(int loanId) {
+    public void setLoanId(Integer loanId) {
         this.loanId = loanId;
     }
 
@@ -76,4 +76,5 @@ public class Loan extends BaseEntity<Loan>{
     public void setLoanAmount(String loanAmount) {
         this.loanAmount = loanAmount;
     }
+
 }

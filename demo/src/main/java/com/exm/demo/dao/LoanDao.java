@@ -7,6 +7,4 @@ import com.exm.demo.entity.Loan;
 public interface LoanDao extends BaseDao<Loan>{
 
     int deleteByIds(String[] ids);
-
-    Loan getByLoanNum(Loan loan);
 }

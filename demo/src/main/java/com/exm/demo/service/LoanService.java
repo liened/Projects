@@ -3,6 +3,7 @@ package com.exm.demo.service;
 import com.exm.demo.common.persistence.Page;
 import com.exm.demo.dao.LoanDao;
 import com.exm.demo.entity.Loan;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,7 +19,7 @@ public class LoanService {
     LoanDao loanDao;
 
     @Transactional(readOnly = true)
-    public List<Loan> findLoans(Loan loan){
+    public List<Loan> findList(Loan loan){
         return loanDao.findList(loan);
     }
 
@@ -31,16 +32,15 @@ public class LoanService {
         return page;
     }
 
-    public int insert(Loan loan){
-        return loanDao.insert(loan);
-    }
-
-    public int update(Loan loan){
-        return loanDao.update(loan);
+    public int saveOrUpdate(Loan loan){
+        if(loan.getLoanId() == null){
+            return loanDao.insert(loan);
+        }else{
+            return loanDao.update(loan);
+        }
     }
 
     public int deleteByIds(String[] ids){
         return loanDao.deleteByIds(ids);
     }
-
 }

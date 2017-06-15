@@ -13,6 +13,20 @@
         product AS "product",
         loan_amount  AS "loanAmount"
         from t_loan
+        <where>
+            <if test="loanId != null and loanId != ''">
+                loan_id = #{loanId}
+            </if>
+            <if test="loanNum != null and loanNum != ''">
+               and loan_num = #{loanNum}
+            </if>
+            <if test="custNum != null and custNum != ''">
+                and cust_num = #{custNum}
+            </if>
+            <if test="custName != null and custName != ''">
+                and cust_name like concat('%',#{custName},'%')
+            </if>
+        </where>
     </select>
 
     <insert id="insert" parameterType="Loan">
@@ -68,18 +82,4 @@
             #{id}
         </foreach>
     </delete>
-
-    <select id="getByLoanNum" resultType="Loan">
-        select
-            loan_id AS "loanId",
-            loan_num AS "loanNum",
-            cust_num AS "custNum",
-            cust_name AS "custName",
-            loan_date AS "loanDate",
-            repayment_type AS "repaymentType",
-            product AS "product",
-            loan_amount  AS "loanAmount"
-        from t_loan
-        where loan_num = #{loanNum}
-    </select>
 </mapper>
