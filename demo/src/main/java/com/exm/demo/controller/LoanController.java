@@ -34,8 +34,8 @@ public class LoanController extends BaseController{
         return successResult(page);
     }
 
-    @RequestMapping("delete")
-    public Result delete(@RequestParam String[] ids){
+    @RequestMapping("deleteByIds")
+    public Result deleteByIds(@RequestParam String[] ids){
         System.out.println("============= delete =============");
         loanService.deleteByIds(ids);
         return successResult(null);
@@ -51,4 +51,5 @@ public class LoanController extends BaseController{
             return errorResult("更新失败");
         }
     }
+
 }

@@ -38,14 +38,15 @@
         repayment_type,
         product,
         loan_amount
-        ) VALUES {
+        ) VALUES (
         #{loanNum},
         #{custNum},
+        #{custName},
         #{loanDate},
         #{repaymentType},
         #{product},
         #{loanAmount}
-        }
+        )
     </insert>
 
     <update id="update">

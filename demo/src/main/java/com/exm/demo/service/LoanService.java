@@ -26,9 +26,7 @@ public class LoanService {
     @Transactional(readOnly = true)
     public Page findPage(Page<Loan> page, Loan loan){
         loan.setPage(page);
-        List<Loan> list = loanDao.findList(loan);
-        System.out.println(list);
-        page.setList(list);
+        page.setList(loanDao.findList(loan));
         return page;
     }
 
