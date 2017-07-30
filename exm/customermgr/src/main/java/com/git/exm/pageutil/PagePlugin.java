@@ -19,7 +19,7 @@ import java.util.Properties;
 import static com.sun.jmx.snmp.ServiceName.DELEGATE;
 
 @Intercepts(@Signature(type= StatementHandler.class,method = "prepare",args={Connection.class}))
-public class PagePlugin implements Interceptor {
+public class PagePlugin extends BaseInterceptor implements Interceptor {
 
     private static String dialect = "";
     private static String pageSqlId = "";
@@ -28,7 +28,7 @@ public class PagePlugin implements Interceptor {
         if(ivk.getTarget() instanceof RoutingStatementHandler){
             RoutingStatementHandler statementHandler = (RoutingStatementHandler) ivk.getTarget();
             BaseStatementHandler delegate = (BaseStatementHandler) Reflections.getFieldValue(statementHandler, DELEGATE);
-            MappedStatement mapperStatement =(MappedStatement) Reflections.getFieldValue(delegate, "MAPPED_STATEMENT");
+            MappedStatement mapperStatement =(MappedStatement) Reflections.getFieldValue(delegate, MAPPED_STATEMENT);
             if(mapperStatement.getId().matches(pageSqlId)){
                 BoundSql boundSql = delegate.getBoundSql();
                 Object parameterObject = boundSql.getParameterObject();
@@ -40,7 +40,7 @@ public class PagePlugin implements Interceptor {
                     String countSql = "select count(0) from ("+sql+") as tmp_count";
                     PreparedStatement countStmt = connection.prepareStatement(countSql);
                     BoundSql countBS = new BoundSql(mapperStatement.getConfiguration(),countSql,boundSql.getParameterMappings(),parameterObject);
-                    setParameters(countStmt,mapperStatement,countBS,parameterObject);
+                    SQLHelper.setParameters(countStmt,mapperStatement,countBS,parameterObject);
                     ResultSet rs = countStmt.executeQuery();
                     int count = 0;
                     if(rs.next()){
@@ -54,13 +54,17 @@ public class PagePlugin implements Interceptor {
                         page = (Page) parameterObject;
                         page.setTotalcCount(count);
                     }else{
-                        Field pageField = Reflections.getFieldValue(parameterObject,"page");
-
-
+                        return Reflections.getFieldValue(parameterObject,"page");
                     }
+
+                    String pagingSql = SQLHelper.generatePageSql(sql, page, null);//DIALECT
+                    if (log.isDebugEnabled()) {
+                        log.debug("PAGE SQL:" + pagingSql);
+                    }
+                    //将分页sql语句反射回BoundSql.
+                    Reflections.setFieldValue(boundSql, "sql", pagingSql);
                 }
             }
-
         }
         return null;
     }

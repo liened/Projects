@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.exm.demo.dao.LoanDao">
+    <select id="findList" resultType="Loan">
+        select
+        loan_id AS "loanId",
+        loan_num AS "loanNum",
+        cust_num AS "custNum",
+        cust_name AS "custName",
+        loan_date AS "loanDate",
+        repayment_type AS "repaymentType",
+        product AS "product",
+        loan_amount  AS "loanAmount"
+        from t_loan
+        <where>
+            <if test="loanId != null and loanId != ''">
+                loan_id = #{loanId}
+            </if>
+            <if test="loanNum != null and loanNum != ''">
+               and loan_num = #{loanNum}
+            </if>
+            <if test="custNum != null and custNum != ''">
+                and cust_num = #{custNum}
+            </if>
+            <if test="custName != null and custName != ''">
+                and cust_name like concat('%',#{custName},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Loan">
+        insert into t_loan(
+        loan_num,
+        cust_num,
+        cust_name,
+        loan_date,
+        repayment_type,
+        product,
+        loan_amount
+        ) VALUES (
+        #{loanNum},
+        #{custNum},
+        #{custName},
+        #{loanDate},
+        #{repaymentType},
+        #{product},
+        #{loanAmount}
+        )
+    </insert>
+
+    <update id="update">
+        update t_loan
+        <set>
+            <if test="loanNum != null">
+                loan_num  = #{loanNum},
+            </if>
+            <if test="custNum != null">
+                cust_num  = #{custNum},
+            </if>
+            <if test="custName != null">
+                cust_name  = #{custName},
+            </if>
+            <if test="loanDate != null">
+                loan_date  = #{loanDate},
+            </if>
+            <if test="repaymentType != null">
+                repayment_type  = #{repaymentType},
+            </if>
+            <if test="product != null">
+                product  = #{product},
+            </if>
+            <if test="loanAmount != null">
+                loan_amount  = #{loanAmount},
+            </if>
+        </set>
+        where loan_id = #{loanId}
+    </update>
+
+    <delete id="deleteByIds">
+        delete from t_loan where loan_id IN
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
