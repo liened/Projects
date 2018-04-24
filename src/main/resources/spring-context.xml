@@ -54,7 +54,7 @@
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
             <property name="dataSource" ref="dataSource"/>
             <property name="typeAliasesPackage" value="com.mydemo"/>
-            <property name="typeAliasesSuperType" value="com.mydemo.base.persistence.BaseEnrity"/>
+            <property name="typeAliasesSuperType" value="com.mydemo.common.persistence.BaseEntity"/>
             <property name="mapperLocations" value="classpath:/mapper/*.xml"/>
             <property name="configLocation" value="classpath:/mybatis-config.xml"/>
         </bean>
@@ -62,7 +62,7 @@
         <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
             <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
             <property name="basePackage" value="com.mydemo.dao"/>
-            <property name="annotationClass" value="com.mydemo.base.persistence.MyBatisDao" />
+            <property name="annotationClass" value="com.mydemo.common.persistence.annotation.MyBatisDao" />
         </bean>
 
         <!-- 配置Annotation驱动，扫描@Transactional注解的类定义事务 -->
